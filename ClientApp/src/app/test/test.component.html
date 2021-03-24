@@ -1,0 +1,152 @@
+
+<div class="container" style="margin-top: 5%;">
+
+    <div class="grid bg-dark mt-3">
+        <h1 class="text-white m-3">Get products from Api</h1>
+        <div>
+            <button class="btn btn-primary w-50 h-100" (click)="getProducts()">
+                Execute
+            </button>
+            <button class="btn btn-danger w-50 h-100" (click)="this.products = null"> 
+                Hide
+            </button>
+        </div>
+        
+    </div>
+    <ul class="list-group" *ngIf="products">
+        <li class="list-group-item" *ngFor="let product of products">
+            <span>{{product.name}}</span>
+            <span>{{product.description}}</span>
+            <span>{{product.productBrand}}</span>
+            <span>{{product.productType}}</span>
+            <span>{{product.category}}</span>
+        </li>
+    </ul>
+
+    <div class="grid bg-dark mt-3">
+        <h1 class="text-white m-3">Get products with params from Api</h1>
+        <div>
+            <button class="btn btn-primary w-50 h-100" (click)="getProductsWithParams()">
+                Execute
+            </button>
+            <button class="btn btn-danger w-50 h-100" (click)="this.productsWithParams = null"> 
+                Hide
+            </button>
+        </div>
+    </div>
+
+        <div class="grid-triple bg-dark ">
+                <ul class="list-group" *ngIf="productBrands">
+                    <li class="list-group-item" 
+                        *ngFor="let brand of productBrands"
+                        [class.active]="brand.id === this.shopParams.brandId"
+                        (click)="onBrandSelected(brand.id)"
+                    >
+                        <span>{{brand.name}}</span>
+                    </li>
+                </ul>
+                <ul class="list-group" *ngIf="productTypes">
+                    <li class="list-group-item" 
+                        *ngFor="let type of productTypes"
+                        [class.active]="type.id === this.shopParams.typeId"
+                        (click)="onTypeSelected(type.id)"
+                    >
+                        <span>{{type.name}}</span>
+                    </li>
+                </ul>
+                <ul class="list-group" *ngIf="productCategories">
+                    <li class="list-group-item" 
+                        *ngFor="let category of productCategories"
+                        (click)="onCategorySelected(category.id)"
+                    >
+                        <span>{{category.name}}</span>
+                    </li>
+                </ul>
+        </div>
+        
+    
+    <ul class="list-group" *ngIf="products">
+        <li class="list-group-item" *ngFor="let product of products">
+            <span>{{product.name}}</span>
+            <span>{{product.description}}</span>
+            <span>{{product.productBrand}}</span>
+            <span>{{product.productType}}</span>
+            <span>{{product.category}}</span>
+        </li>
+    </ul>
+    
+    <div class="row bg-dark d-flex justify-content-between mt-3">
+        <h1 class="text-white m-3">Get boxes from Api</h1>
+        <div>
+            <button class="btn btn-primary w-50 h-100" (click)="getBoxes()">
+                Execute
+            </button>
+            <button class="btn btn-danger w-50 h-100" (click)="this.boxes = null"> 
+                Hide
+            </button>
+        </div>
+        
+    </div>
+    <ul class="list-group" *ngIf="boxes">
+        <li class="list-group-item" *ngFor="let box of boxes">
+            <span>{{box.name}}</span>
+            <span>{{box.color}}</span>
+            <span>{{box.size}}</span>
+        </li>
+    </ul>
+
+    <div class="row bg-dark d-flex justify-content-between mt-3">
+        <h1 class="text-white m-3">Get product brands from Api</h1>
+        <div>
+            <button class="btn btn-primary w-50 h-100 ml0-1" (click)="getProductBrands()">
+                Execute
+            </button>
+            <button class="btn btn-danger w-50 h-100" (click)="this.productBrands = null"> 
+                Hide
+            </button>
+        </div>
+        
+    </div>
+    <ul class="list-group" *ngIf="productBrands">
+        <li class="list-group-item" *ngFor="let brand of productBrands">
+            <span>{{brand.name}}</span>
+        </li>
+    </ul>
+
+    <div class="row bg-dark d-flex justify-content-between mt-3">
+        <h1 class="text-white m-3">Get product types from Api</h1>
+        <div>
+            <button class="btn btn-primary w-50 h-100" (click)="getProductTypes()">
+                Execute
+            </button>
+            <button class="btn btn-danger w-50 h-100" (click)="this.productTypes = null"> 
+                Hide
+            </button>
+        </div>
+        
+    </div>
+    <ul class="list-group" *ngIf="productTypes">
+        <li class="list-group-item" *ngFor="let type of productTypes">
+            <span>{{type.name}}</span>
+
+        </li>
+    </ul>
+
+    <div class="row bg-dark d-flex justify-content-between mt-3">
+        <h1 class="text-white m-3">Get product categories from Api</h1>
+        <div>
+            <button class="btn btn-primary w-50 h-100" (click)="getProductCategories()">
+                Execute
+            </button>
+            <button class="btn btn-danger w-50 h-100" (click)="this.productCategories = null"> 
+                Hide
+            </button>
+        </div>
+        
+    </div>
+    <ul class="list-group" *ngIf="productCategories">
+        <li class="list-group-item" *ngFor="let category of productCategories">
+            <span>{{category.name}}</span>
+        </li>
+    </ul>
+</div>

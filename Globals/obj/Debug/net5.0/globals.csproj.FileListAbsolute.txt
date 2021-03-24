@@ -1,0 +1,12 @@
+C:\Users\pkudr\source\repos\KadoProject\globals\bin\Debug\net5.0\globals.deps.json
+C:\Users\pkudr\source\repos\KadoProject\globals\bin\Debug\net5.0\globals.dll
+C:\Users\pkudr\source\repos\KadoProject\globals\bin\Debug\net5.0\ref\globals.dll
+C:\Users\pkudr\source\repos\KadoProject\globals\bin\Debug\net5.0\globals.pdb
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.csprojAssemblyReference.cache
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.AssemblyInfoInputs.cache
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.AssemblyInfo.cs
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.csproj.CoreCompileInputs.cache
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.dll
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\ref\globals.dll
+C:\Users\pkudr\source\repos\KadoProject\globals\obj\Debug\net5.0\globals.pdb
