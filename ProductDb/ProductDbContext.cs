@@ -1,6 +1,7 @@
 ﻿using Globals;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 
@@ -37,6 +38,8 @@ namespace ProductDb
 			{
 				ConnStr = "PresentBox_Test";
 			}
+
+			optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
 		}
 
 
@@ -50,10 +53,9 @@ namespace ProductDb
 
 		public ProductDbContext CreateTestContext()
 		{
-
 			DirectoryInfo info = new DirectoryInfo(Directory.GetCurrentDirectory());
 			DirectoryInfo temp = info.Parent.Parent.Parent.Parent;
-			String CurDir = Path.Combine(temp.ToString(), "PresentBoxProject");
+			String CurDir = Path.Combine(temp.ToString(), "API");
 			String ConnStr = "PresentBox_Test";
 			Configuration = new ConfigurationBuilder().SetBasePath(CurDir).AddJsonFile("appsettings.json").Build();
 			DbContextOptionsBuilder builder = new DbContextOptionsBuilder<ProductDbContext>();
@@ -61,7 +63,6 @@ namespace ProductDb
 			this.ConnectionString = connectionString;
 			builder.UseSqlServer(connectionString);
 			return this;
-
 		}
 	}
 }

@@ -15601,6 +15601,12 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "API",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "c:\\Users\\pkudr\\source\\repos\\KadoProject\\API\\Views\\FileUpload\\Index.cshtml",
+      "TargetPath": "Views\\FileUpload\\Index.cshtml",
+      "FileKind": "mvc"
+    }
+  ],
   "SerializationFormat": "0.2"
 }

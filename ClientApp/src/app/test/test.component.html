@@ -15,11 +15,11 @@
     </div>
     <ul class="list-group" *ngIf="products">
         <li class="list-group-item" *ngFor="let product of products">
-            <span>{{product.name}}</span>
-            <span>{{product.description}}</span>
-            <span>{{product.productBrand}}</span>
-            <span>{{product.productType}}</span>
-            <span>{{product.category}}</span>
+            <span>Name: {{product.name}} <strong>/</strong> </span>
+            <span>Description: {{product.description}} <strong>/</strong> </span>
+            <span>Brand: {{product.productBrand}} <strong>/</strong> </span>
+            <span>Type: {{product.productType}} <strong>/</strong> </span>
+            <span>Category: {{product.category}} <strong>/</strong> </span>
         </li>
     </ul>
 
@@ -34,44 +34,54 @@
             </button>
         </div>
     </div>
+        
+        <div class="bg-dark">
+            <div class="form-inline ml-3">
+                <input (change)="onSearch()" class="form-control" #search style="width: 300px;" placeholder="Search"type="text">
 
-        <div class="grid-triple bg-dark ">
-                <ul class="list-group" *ngIf="productBrands">
+            </div>
+            
+            <div class="grid-triple">
+                <ul class="list-group" *ngIf="paramsProductBrands">
                     <li class="list-group-item" 
-                        *ngFor="let brand of productBrands"
+                        *ngFor="let brand of paramsProductBrands"
                         [class.active]="brand.id === this.shopParams.brandId"
                         (click)="onBrandSelected(brand.id)"
                     >
                         <span>{{brand.name}}</span>
                     </li>
                 </ul>
-                <ul class="list-group" *ngIf="productTypes">
+                <ul class="list-group" *ngIf="paramsProductTypes">
                     <li class="list-group-item" 
-                        *ngFor="let type of productTypes"
+                        *ngFor="let type of paramsProductTypes"
                         [class.active]="type.id === this.shopParams.typeId"
                         (click)="onTypeSelected(type.id)"
                     >
                         <span>{{type.name}}</span>
                     </li>
                 </ul>
-                <ul class="list-group" *ngIf="productCategories">
+                <ul class="list-group" *ngIf="paramsProductCategories">
                     <li class="list-group-item" 
-                        *ngFor="let category of productCategories"
+                        *ngFor="let category of paramsProductCategories"
+                        [class.active]="category.id === this.shopParams.categoryId"
                         (click)="onCategorySelected(category.id)"
                     >
                         <span>{{category.name}}</span>
                     </li>
                 </ul>
+            </div>
+            
+                
         </div>
         
     
-    <ul class="list-group" *ngIf="products">
-        <li class="list-group-item" *ngFor="let product of products">
-            <span>{{product.name}}</span>
-            <span>{{product.description}}</span>
-            <span>{{product.productBrand}}</span>
-            <span>{{product.productType}}</span>
-            <span>{{product.category}}</span>
+    <ul class="list-group" *ngIf="productsWithParams">
+        <li class="list-group-item" *ngFor="let product of productsWithParams">
+            <span>Name: {{product.name}} <strong>/</strong> </span>
+            <span>Description: {{product.description}} <strong>/</strong> </span>
+            <span>Brand: {{product.productBrand}} <strong>/</strong> </span>
+            <span>Type: {{product.productType}} <strong>/</strong> </span>
+            <span>Category: {{product.category}} <strong>/</strong> </span>
         </li>
     </ul>
     

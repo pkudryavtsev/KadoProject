@@ -7,8 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProductDb;
-using Repository;
-using API.Helpers;
+using Services.Helpers;
+using Services;
+using DAL;
 
 namespace API
 {
@@ -28,8 +29,11 @@ namespace API
 
             services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString(ConnStr)));
 
-            services.AddScoped(typeof(RP));
+            services.AddScoped(typeof(Repo));
+            services.AddScoped(typeof(ProductService));
+            services.AddScoped(typeof(BoxService));
             services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddMvc();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -65,6 +69,9 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=index}/{id?}");
             });
         }
     }

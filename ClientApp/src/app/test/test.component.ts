@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IProduct } from '../models/product';
 import { IProductBrand } from '../models/productBrand';
 import { IProductCategory } from '../models/productCategory';
@@ -12,9 +12,13 @@ import { TestService } from './test.service';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
+  @ViewChild('search', { static : false }) searchTerm: ElementRef;
   products: IProduct[];
   productsWithParams: IProduct[];
   boxes: any[];
+  paramsProductBrands: IProductBrand[];
+  paramsProductTypes: IProductType[];
+  paramsProductCategories: IProductCategory[];
   productBrands: IProductBrand[];
   productTypes: IProductType[];
   productCategories: IProductCategory[];
@@ -24,9 +28,9 @@ export class TestComponent implements OnInit {
   constructor(private testService: TestService) { }
 
   ngOnInit(): void {
-    this.getProductBrands();
-    this.getProductTypes();
-    this.getProductCategories();
+    this.getParamsProductBrands();
+    this.getParamsProductTypes();
+    this.getParamsProductCategories();
   }
 
   getProducts(): void {
@@ -49,18 +53,20 @@ export class TestComponent implements OnInit {
   getBoxes(): void {
 
   }
+
+
   getProductBrands(): void {
     this.testService.getProductBrands().subscribe(response => {
       this.productBrands = response;
-      console.log(`From get brands`);
     }, error => {
       console.log(error);
     })
   }
+
+  
   getProductTypes(): void {
     this.testService.getProductTypes().subscribe(response => {
       this.productTypes = response;
-      console.log(this.products);
     }, error => {
       console.log(error);
     })
@@ -69,7 +75,31 @@ export class TestComponent implements OnInit {
   getProductCategories(): void {
     this.testService.getProductCategories().subscribe(response => {
       this.productCategories = response;
-      console.log(this.products);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  getParamsProductBrands(): void {
+    this.testService.getProductBrands().subscribe(response => {
+      this.paramsProductBrands = response;
+    }, error => {
+      console.log(error);
+    })
+  }
+
+
+  getParamsProductTypes(): void {
+    this.testService.getProductTypes().subscribe(response => {
+      this.paramsProductTypes = response;
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  getParamsProductCategories(): void {
+    this.testService.getProductCategories().subscribe(response => {
+      this.paramsProductCategories = response;
     }, error => {
       console.log(error);
     })
@@ -77,17 +107,22 @@ export class TestComponent implements OnInit {
 
   onBrandSelected(brandId: number): void {
     this.shopParams.brandId = brandId;
-    this.getProducts();
+    console.log(this.shopParams);
   }
 
   onTypeSelected(typeId: number): void {
     this.shopParams.typeId = typeId;
-    this.getProducts();
+    console.log(this.shopParams);
   }
 
   onCategorySelected(categoryId: number): void {
     this.shopParams.categoryId = categoryId;
-    this.getProducts();
+    console.log(this.shopParams);
+  }
+
+  onSearch(): void {
+    this.shopParams.search = this.searchTerm.nativeElement.value;
+    console.log(this.shopParams);
   }
 
 }

@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ProductDb"
+    "\\API",
+    "\\API\\Controllers",
+    "\\ProductDb",
+    "\\ProductDb\\SeedData"
   ],
-  "SelectedNode": "\\Kado.sln",
+  "SelectedNode": "\\API\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

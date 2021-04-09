@@ -1,0 +1,17 @@
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\DAL.deps.json
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\DAL.dll
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\ref\DAL.dll
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\DAL.pdb
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\Globals.dll
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\ProductDB.dll
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\ProductDB.pdb
+C:\Users\pkudr\source\repos\KadoProject\DAL\bin\Debug\net5.0\Globals.pdb
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.csprojAssemblyReference.cache
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.AssemblyInfoInputs.cache
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.AssemblyInfo.cs
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.csproj.CopyComplete
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.dll
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\ref\DAL.dll
+C:\Users\pkudr\source\repos\KadoProject\DAL\obj\Debug\net5.0\DAL.pdb

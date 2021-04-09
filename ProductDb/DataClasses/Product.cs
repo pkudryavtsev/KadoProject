@@ -18,14 +18,14 @@ namespace ProductDb.DataClasses
         public int Stock { get; set; }
         public double Depth { get; set; }
         public double Area { get; set; }
-        public int ProductTypeId { get; set; }
+        public int? ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
-        public int ProductBrandId { get; set; }
+        public int? ProductBrandId { get; set; }
         public ProductBrand ProductBrand { get; set; }
         public String Tags { get; set; }
         public int? BoxId { get; set; }
         public Box Box { get; set; }
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public Category Category { get; set; }
 
     }
