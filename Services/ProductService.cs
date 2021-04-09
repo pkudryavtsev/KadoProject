@@ -86,7 +86,7 @@ namespace Services
 
         public async Task<bool> DeleteProductBrand(int id)
         {
-            bool isAdded = await _repo.DeleteProductBrand(id);
+            bool isAdded = await _repo.RemoveProductBrand(id);
 
             return isAdded;
         }

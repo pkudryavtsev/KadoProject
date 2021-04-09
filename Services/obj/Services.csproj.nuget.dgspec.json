@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj": {
-                "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj"
+              "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj": {
+                "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj"
               }
             }
           }
@@ -128,14 +128,14 @@
         }
       }
     },
-    "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj": {
+    "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj",
-        "projectName": "ProductDB",
-        "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj",
+        "projectUniqueName": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj",
+        "projectName": "ProductDb",
+        "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj",
         "packagesPath": "C:\\Users\\pkudr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\obj\\",
+        "outputPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pkudr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -249,8 +249,8 @@
               "C:\\Users\\pkudr\\source\\repos\\KadoProject\\DAL\\DAL.csproj": {
                 "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\DAL\\DAL.csproj"
               },
-              "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj": {
-                "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj"
+              "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj": {
+                "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj"
               }
             }
           }

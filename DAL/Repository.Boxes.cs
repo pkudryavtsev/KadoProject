@@ -9,7 +9,8 @@ namespace DAL.Repository.Boxes
 {
     public static class Repository_Boxes
     {
-        public static async Task<IReadOnlyList<Box>> GetBoxesWithSpecification(this Repo repo, ISpecification<Box> specification)        {
+        public static async Task<IReadOnlyList<Box>> GetBoxesWithSpecification(this Repo repo, ISpecification<Box> specification)        
+        {
             var query = repo.Context.Boxes
                                     .Include(b => b.Products)
                                         .ThenInclude(p => p.ProductBrand)

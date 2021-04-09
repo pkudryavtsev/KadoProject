@@ -1696,7 +1696,7 @@
           "bin/placeholder/Globals.dll": {}
         }
       },
-      "ProductDB/1.0.0": {
+      "ProductDb/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
@@ -1710,10 +1710,10 @@
           "Microsoft.Extensions.Logging": "5.0.0"
         },
         "compile": {
-          "bin/placeholder/ProductDB.dll": {}
+          "bin/placeholder/ProductDb.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ProductDB.dll": {}
+          "bin/placeholder/ProductDb.dll": {}
         }
       }
     }
@@ -6340,16 +6340,16 @@
       "path": "../Globals/Globals.csproj",
       "msbuildProject": "../Globals/Globals.csproj"
     },
-    "ProductDB/1.0.0": {
+    "ProductDb/1.0.0": {
       "type": "project",
-      "path": "../ProductDB/ProductDB.csproj",
-      "msbuildProject": "../ProductDB/ProductDB.csproj"
+      "path": "../productdb/ProductDb.csproj",
+      "msbuildProject": "../productdb/ProductDb.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "LinqKit >= 1.1.24",
-      "ProductDB >= 1.0.0"
+      "ProductDb >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6379,8 +6379,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj": {
-              "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj"
+            "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj": {
+              "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj"
             }
           }
         }

@@ -1800,7 +1800,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "LinqKit": "1.1.24",
-          "ProductDB": "1.0.0"
+          "ProductDb": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DAL.dll": {}
@@ -1822,7 +1822,7 @@
           "bin/placeholder/Globals.dll": {}
         }
       },
-      "ProductDB/1.0.0": {
+      "ProductDb/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
@@ -1836,10 +1836,10 @@
           "Microsoft.Extensions.Logging": "5.0.0"
         },
         "compile": {
-          "bin/placeholder/ProductDB.dll": {}
+          "bin/placeholder/ProductDb.dll": {}
         },
         "runtime": {
-          "bin/placeholder/ProductDB.dll": {}
+          "bin/placeholder/ProductDb.dll": {}
         }
       },
       "Services/1.0.0": {
@@ -1848,7 +1848,7 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "DAL": "1.0.0",
-          "ProductDB": "1.0.0"
+          "ProductDb": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Services.dll": {}
@@ -6648,10 +6648,10 @@
       "path": "../Globals/Globals.csproj",
       "msbuildProject": "../Globals/Globals.csproj"
     },
-    "ProductDB/1.0.0": {
+    "ProductDb/1.0.0": {
       "type": "project",
-      "path": "../ProductDB/ProductDB.csproj",
-      "msbuildProject": "../ProductDB/ProductDB.csproj"
+      "path": "../productdb/ProductDb.csproj",
+      "msbuildProject": "../productdb/ProductDb.csproj"
     },
     "Services/1.0.0": {
       "type": "project",
@@ -6666,7 +6666,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.4",
       "Microsoft.Extensions.DependencyInjection >= 5.0.1",
-      "ProductDB >= 1.0.0",
+      "ProductDb >= 1.0.0",
       "Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -6701,8 +6701,8 @@
             "C:\\Users\\pkudr\\source\\repos\\KadoProject\\Globals\\Globals.csproj": {
               "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\Globals\\Globals.csproj"
             },
-            "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj": {
-              "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj"
+            "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj": {
+              "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj"
             },
             "C:\\Users\\pkudr\\source\\repos\\KadoProject\\Services\\Services.csproj": {
               "projectPath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\Services\\Services.csproj"

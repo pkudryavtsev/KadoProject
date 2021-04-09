@@ -39,6 +39,11 @@ namespace DAL.Repository.Products
             return products;
         }
 
+        public static async Task<List<Product>> GetAllProducts(this Repo repo)
+        {
+            return await repo.Context.Products.ToListAsync();
+        }
+
         public static async Task<Product> GetProductById(this Repo repo, int id)
         {
             var product = await repo.Context.Products.AsNoTracking()
@@ -54,6 +59,9 @@ namespace DAL.Repository.Products
         {
             if (product is null)
                 return false;
+            
+            if (product.Id is not 0)
+                return false;
 
             await repo.Context.Products.AddAsync(product);
             var changes = await repo.Context.SaveChangesAsync();
@@ -62,7 +70,7 @@ namespace DAL.Repository.Products
 
         public static async Task<bool> RemoveProduct(this Repo repo, int id)
         {
-            var productToDelete = repo.GetProductById(id);
+            var productToDelete = await repo.GetProductById(id);
             if (productToDelete is null)
                 return false;
 
@@ -73,6 +81,9 @@ namespace DAL.Repository.Products
 
         public static async Task<bool> UpdateProduct(this Repo repo, Product product)
         {
+            if (product is null)
+                return false;
+
             var productToUpdate = await repo.GetProductById(product.Id);
             if (productToUpdate is null)
                 return false;

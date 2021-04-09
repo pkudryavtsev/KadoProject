@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using ProductDb;
 using ProductDb.DataClasses;
+using Repository.Tests.TestCases.Products;
 
 namespace Repository.Tests
 {
@@ -37,7 +38,7 @@ namespace Repository.Tests
         }
 
         [Test]
-        [TestCaseSource(nameof(ProductFilterSpecificationCases))]
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.ProductFilterSpecificationCases))]
         public async Task Products_GetProductsWithSpecification_ReturnsListOfProducts(ValueTuple<ProductFilterSpecification, int> testParams)
         {
             using (var context =  TestHelper.CreateContext())
@@ -83,12 +84,12 @@ namespace Repository.Tests
         }      
 
         [Test]
-        public async Task Products_CreateProduct_ReturnsTrueIfSucess()
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.SuccessCreateProductCases))]
+        public async Task Products_CreateProduct_ReturnsTrueIfSucess(Product product)
         {
             using (var context = TestHelper.CreateContext())
             {
                 var repository = new Repo(context);
-                var product = new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, Name = "New"};
 
                 var isSuccess = await repository.CreateProduct(product);
 
@@ -97,12 +98,12 @@ namespace Repository.Tests
         }
 
         [Test]
-        public async Task Products_CreateProduct_ReturnsFalseIfFail()
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.FailCreateProductCases))]
+        public async Task Products_CreateProduct_ReturnsFalseIfFail(Product product)
         {
             using (var context = TestHelper.CreateContext())
             {
                 var repository = new Repo(context);
-                Product product = null;
 
                 var isSuccess = await repository.CreateProduct(product);
 
@@ -111,45 +112,60 @@ namespace Repository.Tests
         }
 
         [Test]
-        public async Task Products_UpdateProduct_ReturnsTrueIfSuccess()
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.SuccessUpdateProductCases))]
+        public async Task Products_UpdateProduct_ReturnsTrueIfSuccess(Product product)
         {
             using (var context = TestHelper.CreateContext())
             {
                 var repository = new Repo(context);
-                var product = new Product { Id = 1, Name = "Changed"};
 
                 var isSuccess = await repository.UpdateProduct(product);
 
                 Assert.IsTrue(isSuccess);
             }
         }
-
         
 
-        static IEnumerable<(ProductFilterSpecification, int)> ProductFilterSpecificationCases()
+        [Test]
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.FailUpdateProductCases))]
+        public async Task Products_UpdateProduct_ReturnsFalseIfFail(Product product)
         {
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 2, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 3, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { TypeId = 1, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { TypeId = 2, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { TypeId = 3, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { CategoryId = 1, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { CategoryId = 2, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { CategoryId = 3, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { Search = "Product", PageSize = 0}), 12);
-            yield return (new ProductFilterSpecification(new ProductParams { Search = "Product" }), 6);
-            yield return (new ProductFilterSpecification(new ProductParams { Search = "Dummy" }), 0);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, TypeId = 1, CategoryId = 1, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, TypeId = 2, CategoryId = 1, PageSize = 0}), 0);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 2, TypeId = 2, CategoryId = 2, PageSize = 0}), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 2, TypeId = 3, CategoryId = 2, PageSize = 0}), 0);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, TypeId = 1, CategoryId = 1, Search = "Product", PageSize = 0 }), 4);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, TypeId = 1, CategoryId = 1, Search = "Product 1", PageSize = 0 }), 2);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, TypeId = 1, CategoryId = 1, Search = "Product 2", PageSize = 0 }), 0);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 1, TypeId = 1, CategoryId = 1, Search = "10", PageSize = 0 }), 1);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 2, TypeId = 1, CategoryId = 1, Search = "10", PageSize = 0 }), 0);
-            yield return (new ProductFilterSpecification(new ProductParams { BrandId = 3, TypeId = 3, CategoryId = 3, Search = "12", PageSize = 0 }), 1);
+            using (var context = TestHelper.CreateContext())
+            {
+                var repository = new Repo(context);
+
+                var isSuccess = await repository.UpdateProduct(product);
+
+                Assert.IsFalse(isSuccess);
+            }
+        }
+
+        [Test]
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.SuccessRemoveProductCases))]
+        public async Task Products_DeleteProduct_ReturnsTrueIfSuccess(int id)
+        {
+            using (var context = TestHelper.CreateContext())
+            {
+                var repository = new Repo(context);
+
+                var isSuccess = await repository.RemoveProduct(id);
+
+                Assert.IsTrue(isSuccess);
+            }
+        }
+
+        [Test]
+        [TestCaseSource(typeof(TestCasesProducts), nameof(TestCasesProducts.FailRemoveProductCases))]
+        public async Task Products_RemoveProduct_ReturnsFalseIfFail(int id)
+        {
+            using (var context = TestHelper.CreateContext())
+            {
+                var repository = new Repo(context);
+
+                var isSuccess = await repository.RemoveProduct(id);
+
+                Assert.IsFalse(isSuccess);
+            }
         }
     }
 }

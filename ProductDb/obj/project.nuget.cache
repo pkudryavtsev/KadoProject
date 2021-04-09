@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0SX+uXqhHHfDouXsJwKy6dhHb4Srl4kGKkTFt1wRTNDK7vucFc2YqPx3K2jAcz2fmRpFYa4Z15LvkoSpjbx6AQ==",
+  "dgSpecHash": "0ZCIv1buv6dM1oV8MrJXXRC9onF5nDnuKoiE7KQl/PZKgXbvvoM1Pvf7dg58cfHkvbtlXYdraNKVFMBbexTZZw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\ProductDB\\ProductDB.csproj",
+  "projectFilePath": "C:\\Users\\pkudr\\source\\repos\\KadoProject\\productdb\\ProductDb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pkudr\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\pkudr\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "ProductDB/1.0.0": {
+      "ProductDb/1.0.0": {
         "dependencies": {
           "Globals": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.4",
@@ -19,7 +19,7 @@
           "Microsoft.Extensions.Logging": "5.0.0"
         },
         "runtime": {
-          "ProductDB.dll": {}
+          "ProductDb.dll": {}
         }
       },
       "AutoMapper/10.1.1": {
@@ -1169,7 +1169,7 @@
     }
   },
   "libraries": {
-    "ProductDB/1.0.0": {
+    "ProductDb/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

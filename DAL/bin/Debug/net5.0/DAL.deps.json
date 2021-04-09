@@ -9,7 +9,7 @@
       "DAL/1.0.0": {
         "dependencies": {
           "LinqKit": "1.1.24",
-          "ProductDB": "1.0.0"
+          "ProductDb": "1.0.0"
         },
         "runtime": {
           "DAL.dll": {}
@@ -1237,7 +1237,7 @@
           "Globals.dll": {}
         }
       },
-      "ProductDB/1.0.0": {
+      "ProductDb/1.0.0": {
         "dependencies": {
           "Globals": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.4",
@@ -1249,7 +1249,7 @@
           "Microsoft.Extensions.Logging": "5.0.0"
         },
         "runtime": {
-          "ProductDB.dll": {}
+          "ProductDb.dll": {}
         }
       }
     }
@@ -2035,7 +2035,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ProductDB/1.0.0": {
+    "ProductDb/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
