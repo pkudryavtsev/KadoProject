@@ -77,7 +77,7 @@ namespace API.Controllers
         [HttpDelete("Products/Delete/{id}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
-            var isSuccess = await _productService.DeleteProduct(id);
+            var isSuccess = await _productService.RemoveProduct(id);
 
             if (!isSuccess)
                 return NotFound();
@@ -97,18 +97,6 @@ namespace API.Controllers
 
             return NoContent();
         }
-
-        [HttpGet("Boxes")]
-        public async Task<ActionResult<IReadOnlyList<BoxToReturnDto>>> GetBoxes([FromQuery] ProductParams productParams)
-        {
-            var boxes = await _productService.GetBoxesWithParams(productParams);
-
-            if (boxes is null)
-                return BadRequest();
-
-            return Ok(boxes);
-        }
-
 
         /// <summary>
         /// Gets all product brands

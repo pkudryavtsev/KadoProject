@@ -29,7 +29,7 @@ namespace Services
         {
             var specification = new ProductFilterSpecification(productParams);
 
-            var products = await _repo.GetProductsWithSpecification(null);
+            var products = await _repo.GetProductsWithSpecification(specification);
 
             return _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
         }
@@ -59,9 +59,9 @@ namespace Services
             return isEdited;
         }
 
-        public async Task<bool> DeleteProduct(int id)
+        public async Task<bool> RemoveProduct(int id)
         {
-            var isDeleted = await _repo.RemoveProduct(id);
+            var isDeleted = await _repo.DeleteProduct(id);
 
             return isDeleted;
         }
@@ -91,14 +91,6 @@ namespace Services
             return isAdded;
         }
 
-        public async Task<IReadOnlyList<BoxToReturnDto>> GetBoxesWithParams(ProductParams productParams)
-        {
-            var specification = new BoxFilterSpecification(productParams);
-
-            var boxes = await _repo.GetBoxesWithSpecification(specification);
-
-            return _mapper.Map<IReadOnlyList<Box>, IReadOnlyList<BoxToReturnDto>>(boxes);
-        }
 
         public async Task<IReadOnlyList<ProductBrand>> GetProductBrands()
         {

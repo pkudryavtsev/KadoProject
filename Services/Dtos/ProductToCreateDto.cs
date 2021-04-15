@@ -4,6 +4,7 @@ namespace Services.Dtos
 {
     public class ProductToCreateDto
     {
+        [Required]
         public string Name { get; set; } 
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -11,9 +12,11 @@ namespace Services.Dtos
         public double Depth { get; set; }
         public double Area { get; set; }
         public string PictureUrl { get; set; }
+        [Required]
         public int ProductTypeId { get; set; }
         [Required]
         public int ProductBrandId { get; set; }
+        [Required]
         public int CategoryId { get; set; }
         public string Tags { get; set; }  
     }

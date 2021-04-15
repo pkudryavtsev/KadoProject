@@ -17,6 +17,6 @@ namespace ProductDb.DataClasses
         public BoxColor Color { get; set; } = BoxColor.Black;
         public double Price { get; set; }
         public int Stock { get; set; }
-        public List<Product> Products { get; set; }
+        public IList<BoxProduct> BoxProducts { get; set; }
     }
 }

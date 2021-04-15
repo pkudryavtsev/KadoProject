@@ -6,8 +6,7 @@ namespace DAL.Specifications
 {
     public class ProductFilterSpecification : BaseSpecification<Product>
     {
-        
-
+        public ProductParams Params { get; protected set; }
         
         public ProductFilterSpecification(ProductParams productParams)
         {

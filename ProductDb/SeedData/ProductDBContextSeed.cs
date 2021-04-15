@@ -79,6 +79,19 @@ namespace ProductDb.SeedData
 
                     await context.SaveChangesAsync();
                 }
+
+                if (!context.BoxProducts.Any())
+                {
+                    var jsonData = File.ReadAllText("../ProductDb/SeedData/BoxToProductSeed.json");
+                    var data = JsonSerializer.Deserialize<List<BoxProduct>>(jsonData);
+
+                    foreach (var entry in data)
+                    {
+                        context.BoxProducts.Add(entry);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
             }
             catch (Exception e)
             {

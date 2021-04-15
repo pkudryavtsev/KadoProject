@@ -49,16 +49,17 @@ namespace DAL.Repository.ProductBrands
 
         public static async Task<bool> RemoveProductBrand(this Repo repo, int id)
         {
+            var brandToDelete = await repo.GetProductBrandById(id);
+            if (brandToDelete is null)
+                return false;
+
             var products = await repo.GetAllProducts();
             foreach (var product in products)
             {
                 if (product.ProductBrandId == id)
                     product.ProductBrandId = null;
+                    repo.Context.Entry(product.ProductBrand).State = EntityState.Detached;
             }
-
-            var brandToDelete = await repo.GetProductBrandById(id);
-            if (brandToDelete is null)
-                return false;
 
             repo.Context.ProductBrands.Remove(brandToDelete);
             var changes = await repo.Context.SaveChangesAsync();

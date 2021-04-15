@@ -148,7 +148,7 @@ namespace Repository.Tests
             {
                 var repository = new Repo(context);
 
-                var isSuccess = await repository.RemoveProduct(id);
+                var isSuccess = await repository.DeleteProduct(id);
 
                 Assert.IsTrue(isSuccess);
             }
@@ -162,7 +162,7 @@ namespace Repository.Tests
             {
                 var repository = new Repo(context);
 
-                var isSuccess = await repository.RemoveProduct(id);
+                var isSuccess = await repository.DeleteProduct(id);
 
                 Assert.IsFalse(isSuccess);
             }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ProductDb;
@@ -20,6 +22,7 @@ namespace Repository.Tests
 			var builder = new DbContextOptionsBuilder<ProductDbContext>();
 			string connectionString = configuration.GetConnectionString(ConnStr);
             builder.UseSqlServer(connectionString);
+            builder.EnableSensitiveDataLogging();
 			return new ProductDbContext(builder.Options) {Configuration = configuration};
         }
 
@@ -64,22 +67,48 @@ namespace Repository.Tests
                 context.SaveChanges();
 
                 var products = new List<Product> {
-                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, BoxId = 1, Name = "Product 1"}, 
-                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, BoxId = 1, Name = "Product 2"}, 
-                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, BoxId = 1, Name = "Product 3"}, 
-                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, BoxId = 2, Name = "Product 4"}, 
-                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, BoxId = 2, Name = "Product 5"}, 
-                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, BoxId = 2, Name = "Product 6"}, 
-                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, BoxId = 3, Name = "Product 7"}, 
-                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, BoxId = 3, Name = "Product 8"}, 
-                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, BoxId = 3, Name = "Product 9"}, 
-                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, BoxId = 4, Name = "Product 10"}, 
-                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, BoxId = 4, Name = "Product 11"}, 
-                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, BoxId = 4, Name = "Product 12"},
+                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, Name = "Product 1"}, 
+                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2,  Name = "Product 2"}, 
+                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, Name = "Product 3"}, 
+                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, Name = "Product 4"}, 
+                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, Name = "Product 5"}, 
+                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, Name = "Product 6"}, 
+                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, Name = "Product 7"}, 
+                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, Name = "Product 8"}, 
+                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, Name = "Product 9"}, 
+                    new Product { ProductBrandId = 1, ProductTypeId = 1, CategoryId = 1, Name = "Product 10"}, 
+                    new Product { ProductBrandId = 2, ProductTypeId = 2, CategoryId = 2, Name = "Product 11"}, 
+                    new Product { ProductBrandId = 3, ProductTypeId = 3, CategoryId = 3, Name = "Product 12"},
                 };
                 context.Products.AddRange(products);
                 context.SaveChanges();
+
+                var boxProducts = new List<BoxProduct> {
+                    new BoxProduct { BoxId = 1, ProductId = 1},
+                    new BoxProduct { BoxId = 1, ProductId = 2},
+                    new BoxProduct { BoxId = 1, ProductId = 3},
+                    new BoxProduct { BoxId = 2, ProductId = 4},
+                    new BoxProduct { BoxId = 2, ProductId = 5},
+                    new BoxProduct { BoxId = 2, ProductId = 6},
+                    new BoxProduct { BoxId = 2, ProductId = 7},
+                    new BoxProduct { BoxId = 3, ProductId = 8},
+                    new BoxProduct { BoxId = 3, ProductId = 9},
+                    new BoxProduct { BoxId = 3, ProductId = 10},
+                    new BoxProduct { BoxId = 4, ProductId = 1},
+                    new BoxProduct { BoxId = 4, ProductId = 3},
+                    new BoxProduct { BoxId = 4, ProductId = 12},
+                };
+                context.BoxProducts.AddRange(boxProducts);
+                context.SaveChanges();   
             };
+        }
+
+        public static async Task<Box> GetLastBox(this Repo repo)
+        {
+            using (var context = CreateContext())
+            {
+                return await context.Boxes.LastAsync();
+            }
         }
     }
 }

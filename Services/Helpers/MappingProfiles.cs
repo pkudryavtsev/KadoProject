@@ -19,7 +19,14 @@ namespace Services.Helpers
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductUrlResolver>());
         
             CreateMap<Box, BoxToReturnDto>()
-                .ForMember(d => d.Products, o => o.MapFrom(s => s.Products));
+                .ForMember(d => d.Products, o => o.MapFrom(s => s.BoxProducts.Select(x => x.Product).ToList()))
+                .ReverseMap();
+
+            CreateMap<BoxToCreateDto, Box>()
+                .ForMember(d => d.BoxProducts, o => o.MapFrom(s => s.ProductIds.Select(p => new BoxProduct { ProductId = p}).ToList()));
+
+             CreateMap<BoxToUpdateDto, Box>()
+                .ForMember(d => d.BoxProducts, o => o.MapFrom(s => s.ProductIds.Select(p => new BoxProduct { ProductId = p, BoxId = s.Id}).ToList()));
         }
     }
 }

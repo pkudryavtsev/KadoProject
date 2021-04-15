@@ -23,10 +23,9 @@ namespace ProductDb.DataClasses
         public int? ProductBrandId { get; set; }
         public ProductBrand ProductBrand { get; set; }
         public String Tags { get; set; }
-        public int? BoxId { get; set; }
-        public Box Box { get; set; }
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
+        public IList<BoxProduct> BoxProducts { get; set; }
 
     }
 }

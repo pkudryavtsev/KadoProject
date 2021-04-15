@@ -50,16 +50,17 @@ namespace DAL.Repository.ProductTypes
 
         public static async Task<bool> RemoveProductType(this Repo repo, int id)
         {
+            var typeToDelete = await repo.GetProductTypeById(id);
+            if (typeToDelete is null)
+                return false;
+            
             var products = await repo.GetAllProducts();
             foreach (var product in products)
             {
                 if (product.ProductTypeId == id)
                     product.ProductTypeId = null;
+                    repo.Context.Entry(product.ProductType).State = EntityState.Detached;
             }
-
-            var typeToDelete = await repo.GetProductTypeById(id);
-            if (typeToDelete is null)
-                return false;
 
             repo.Context.ProductTypes.Remove(typeToDelete);
             var changes = await repo.Context.SaveChangesAsync();

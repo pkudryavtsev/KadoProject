@@ -50,16 +50,17 @@ namespace DAL.Repository.Categories
 
         public static async Task<bool> RemoveCategory(this Repo repo, int id)
         {
+            var typeToDelete = await repo.GetCategoryById(id);
+            if (typeToDelete is null)
+                return false;
+
             var products = await repo.GetAllProducts();
             foreach (var product in products)
             {
                 if (product.CategoryId == id)
                     product.CategoryId = null;
+                    repo.Context.Entry(product.Category).State = EntityState.Detached;
             }
-
-            var typeToDelete = await repo.GetCategoryById(id);
-            if (typeToDelete is null)
-                return false;
 
             repo.Context.Categories.Remove(typeToDelete);
             var changes = await repo.Context.SaveChangesAsync();

@@ -13,7 +13,7 @@ namespace DAL.Repository.Products
         public static async Task<IReadOnlyList<Product>> GetProductsWithSpecification(this Repo repo, ProductFilterSpecification specification)
         {
             if (specification is null)
-                return await repo.Context.Products.ToListAsync();
+                return await repo.GetAllProducts();
 
             var query = repo.Context.Products
                                 .Include(p => p.ProductBrand)
@@ -41,18 +41,20 @@ namespace DAL.Repository.Products
 
         public static async Task<List<Product>> GetAllProducts(this Repo repo)
         {
-            return await repo.Context.Products.ToListAsync();
+            return await repo.Context.Products
+                                        .Include(p => p.ProductBrand)
+                                        .Include(p => p.ProductType)
+                                        .Include(p => p.Category)
+                                        .ToListAsync();
         }
 
         public static async Task<Product> GetProductById(this Repo repo, int id)
         {
-            var product = await repo.Context.Products.AsNoTracking()
+            return await repo.Context.Products.AsNoTracking()
                                 .Include(p => p.ProductBrand)
                                 .Include(p => p.ProductType)
                                 .Include(p => p.Category)
                             .FirstOrDefaultAsync(p => p.Id == id);
-
-            return product;
         }
 
         public static async Task<bool> CreateProduct(this Repo repo, Product product)
@@ -68,7 +70,7 @@ namespace DAL.Repository.Products
             return changes > 0;
         }
 
-        public static async Task<bool> RemoveProduct(this Repo repo, int id)
+        public static async Task<bool> DeleteProduct(this Repo repo, int id)
         {
             var productToDelete = await repo.GetProductById(id);
             if (productToDelete is null)
@@ -87,8 +89,7 @@ namespace DAL.Repository.Products
             var productToUpdate = await repo.GetProductById(product.Id);
             if (productToUpdate is null)
                 return false;
-
-            //repo.Context.Products.Attach(product);
+                
             var entry = repo.Context.Entry(product);
             entry.State = EntityState.Modified;
             var changes = await repo.Context.SaveChangesAsync();

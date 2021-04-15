@@ -47,6 +47,29 @@ namespace ProductDb.Migrations
                     b.ToTable("Boxes");
                 });
 
+            modelBuilder.Entity("ProductDb.DataClasses.BoxProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BoxId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("BoxId", "ProductId")
+                        .IsUnique();
+
+                    b.ToTable("BoxProducts");
+                });
+
             modelBuilder.Entity("ProductDb.DataClasses.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -71,9 +94,6 @@ namespace ProductDb.Migrations
 
                     b.Property<double>("Area")
                         .HasColumnType("float");
-
-                    b.Property<int?>("BoxId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
@@ -106,8 +126,6 @@ namespace ProductDb.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BoxId");
 
                     b.HasIndex("CategoryId");
 
@@ -148,12 +166,27 @@ namespace ProductDb.Migrations
                     b.ToTable("Types");
                 });
 
-            modelBuilder.Entity("ProductDb.DataClasses.Product", b =>
+            modelBuilder.Entity("ProductDb.DataClasses.BoxProduct", b =>
                 {
                     b.HasOne("ProductDb.DataClasses.Box", "Box")
-                        .WithMany("Products")
-                        .HasForeignKey("BoxId");
+                        .WithMany("BoxProducts")
+                        .HasForeignKey("BoxId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.HasOne("ProductDb.DataClasses.Product", "Product")
+                        .WithMany("BoxProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Box");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProductDb.DataClasses.Product", b =>
+                {
                     b.HasOne("ProductDb.DataClasses.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
@@ -166,8 +199,6 @@ namespace ProductDb.Migrations
                         .WithMany()
                         .HasForeignKey("ProductTypeId");
 
-                    b.Navigation("Box");
-
                     b.Navigation("Category");
 
                     b.Navigation("ProductBrand");
@@ -177,12 +208,17 @@ namespace ProductDb.Migrations
 
             modelBuilder.Entity("ProductDb.DataClasses.Box", b =>
                 {
-                    b.Navigation("Products");
+                    b.Navigation("BoxProducts");
                 });
 
             modelBuilder.Entity("ProductDb.DataClasses.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("ProductDb.DataClasses.Product", b =>
+                {
+                    b.Navigation("BoxProducts");
                 });
 #pragma warning restore 612, 618
         }

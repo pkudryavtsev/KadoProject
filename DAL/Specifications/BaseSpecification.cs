@@ -6,7 +6,7 @@ namespace DAL.Specifications
 {
     public class BaseSpecification<T> : ISpecification<T> where T : BaseEntity
     {
-        public ProductParams Params { get; protected set; }
+
         public Expression<Func<T, bool>> Criteria { get; protected set; }
 
         public Expression<Func<T, object>> OrderBy { get; protected set; }
